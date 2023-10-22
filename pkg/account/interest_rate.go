@@ -12,7 +12,10 @@ func CalculateInterestApplicable(balance float64) (decimal.Decimal, error) {
 	}
 
 	result := balance * interestApplicable
-	interestAmount := decimal.NewFromFloat(result)
 
+	// Use 4 decimal places for precision
+	interestAmount := decimal.NewFromFloat(result).Round(4)
+
+	// Return in cents, typicall 2 decimal places
 	return interestAmount.Round(2), nil
 }
