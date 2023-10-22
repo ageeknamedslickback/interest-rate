@@ -31,8 +31,8 @@ const (
 	// GTELastBandInterest is the interest applicable to the Greater Than or Equal to Last band balance
 	GTELastBandInterest float64 = 0.03
 
-	// NoOpInterest represents a no operation interest value
-	NoOpInterest float64 = 0.0
+	// NoOpFloatValue represents a no operation balance/interest value
+	NoOpFloatValue float64 = 0.0
 )
 
 // InterestRatingTable maps the balance bands to their respective applicable interests
@@ -64,5 +64,5 @@ func MapBalanceToApplicableInterest(balance float64) (float64, error) {
 		return GTELastBandInterest, nil
 	}
 
-	return NoOpInterest, fmt.Errorf("unable to get the interest applicable to a balance of %v", balance)
+	return NoOpFloatValue, fmt.Errorf("unable to get the interest applicable to a balance of %v", balance)
 }
