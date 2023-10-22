@@ -63,13 +63,20 @@ You need to have the following before running the package:
 
    ```bash
    $ curl http://localhost:8000/interest/1000
-   {"interest":"15"}
+   {"interest":"$15"}
    ```
 
 ### Run Tests
 
-The package is covered by behaviour, table driven tests which can be run using the command:
+1. The package is covered by behaviour, table driven tests which can be run using the command:
 
-```bash
-$ go test ./...
-```
+   ```bash
+   $ go test ./...
+   ```
+
+2. To get the test coverage of the package, run the following command(s):
+
+   ```bash
+   $ go test ./... -coverprofile=coverage.out
+   $ go tool cover -html=coverage.out
+   ```

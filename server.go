@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -13,7 +14,6 @@ import (
 // CalculateInterestHandler is a REST handler to calculate the interest given a balance
 func CalculateInterestHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	log.Print(vars)
 	balance, err := strconv.ParseFloat(vars["balance"], 64)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -29,7 +29,7 @@ func CalculateInterestHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]interface{}{"interest": interestAmount})
+	json.NewEncoder(w).Encode(map[string]interface{}{"interest": fmt.Sprintf("$%v", interestAmount)})
 }
 
 func main() {
